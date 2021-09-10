@@ -4,6 +4,7 @@ import './App.css';
 import CharCard from './components/CharacterCard';
 import axios from 'axios';
 import styled from 'styled-components';
+import Details from './components/CharDetails';
 
 const StyledPage = styled.div`
   display: flex;
@@ -26,17 +27,22 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
   const [characters, setCharacters] = useState([]);
-  const [currentChar, setCurrentChar] = useState(1);
+  const [currentChar, setCurrentChar] = useState('');
 
-  const closeChar = () => {
-    setCurrentChar(null);
+  const detailsActive = name => {
+    setCurrentChar(name);
   }
+
+  const detailsClosed = () => {
+    setCurrentChar('');
+  }
+
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/people/")
     .then(resp => {
       setCharacters(resp.data);
-      // console.log(resp.data);
+      console.log(resp.data);
     })
     .catch(err => {
       console.log(err);
@@ -47,7 +53,8 @@ const App = () => {
   return (
     <StyledPage>
       <h1 className="Header">Star Wars</h1>
-      <CharCard characters={characters}/>
+      <CharCard characters={characters} detailsActive={detailsActive} charId={currentChar} close={detailsClosed}/>
+      
     </StyledPage>
   );
 }

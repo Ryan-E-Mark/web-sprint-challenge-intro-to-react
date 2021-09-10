@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import Character from "./Character";
+import Details from "./CharDetails";
 
 
 const StyledContainer = styled.div`
@@ -24,7 +25,7 @@ const StyledContainer = styled.div`
 
 export default function CharCard(props) {
     
-    const { characters } = props;
+    const { characters, detailsActive, charId, close } = props;
     
     
 
@@ -33,10 +34,12 @@ export default function CharCard(props) {
             
             <h2>Characters</h2>
             {characters.map((char, ind) => {
-                return <Character char={char} key={ind}/>
+                return <Character char={char} key={ind} detailsActive={detailsActive}/>
+                
             })
-            }
             
+            }
+            {charId !== '' && <Details charId={charId} close={close} characters={characters} />}
                 
             
         </StyledContainer>

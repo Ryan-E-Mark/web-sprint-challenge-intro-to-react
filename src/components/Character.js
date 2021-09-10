@@ -46,7 +46,7 @@ const StyledButtonContainer = styled.div`
 
 export default function Character(props) {
 
-    const { char } = props
+    const { char, detailsActive, } = props
 
     return(
         <StyledChar>
@@ -54,7 +54,7 @@ export default function Character(props) {
                 <p>{char.name}</p>
             </StyledName>
             <StyledButtonContainer>
-                <button>Details</button>
+                <button onClick={() => detailsActive(char.name)}>Details</button>
             </StyledButtonContainer>
         </StyledChar>
     )
