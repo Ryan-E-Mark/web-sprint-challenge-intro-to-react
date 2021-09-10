@@ -4,7 +4,6 @@ import './App.css';
 import CharCard from './components/CharacterCard';
 import axios from 'axios';
 import styled from 'styled-components';
-import Details from './components/CharDetails';
 
 const StyledPage = styled.div`
   display: flex;
@@ -42,7 +41,6 @@ const App = () => {
     axios.get("https://swapi.dev/api/people/")
     .then(resp => {
       setCharacters(resp.data);
-      console.log(resp.data);
     })
     .catch(err => {
       console.log(err);
