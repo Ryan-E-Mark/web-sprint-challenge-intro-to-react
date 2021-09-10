@@ -3,6 +3,12 @@
 }
 .Header {
   color: #443e3e;
-  text-shadow: 1px 1px 5px #fff;
+  text-shadow: 1px 1px 5px #020202;
+  
 }
 /* write your parent styles in here for your App.js */
+* {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-family: 'Carrois Gothic SC', sans-serif;
+}

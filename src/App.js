@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { data } from './mocks/handlers';
+
 import CharCard from './components/CharacterCard';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const StyledPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 4rem;
+    color: #ffde00;
+  }
+`
+
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -20,20 +34,21 @@ const App = () => {
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/people/")
-    .then {
-      setCharacters(data);
-      console.log(data);
-    }.catch(err) {
+    .then(resp => {
+      setCharacters(resp.data);
+      // console.log(resp.data);
+    })
+    .catch(err => {
       console.log(err);
-    }
+    })
     
   }, [])
 
   return (
-    <div className="App">
-      <h1 className="Header">Characters</h1>
+    <StyledPage>
+      <h1 className="Header">Star Wars</h1>
       <CharCard characters={characters}/>
-    </div>
+    </StyledPage>
   );
 }
 
