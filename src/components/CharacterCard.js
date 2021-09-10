@@ -10,11 +10,12 @@ const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 1%;
     
     h2 {
         font-size: 2rem;
+        padding: 0;
     }
-
 
 `
 
@@ -29,13 +30,13 @@ export default function CharCard(props) {
 
     return (
         <StyledContainer>
-            <div>
+            
             <h2>Characters</h2>
             {characters.map((char, ind) => {
                 return <Character char={char} key={ind}/>
             })
             }
-            </div>
+            
                 
             
         </StyledContainer>
